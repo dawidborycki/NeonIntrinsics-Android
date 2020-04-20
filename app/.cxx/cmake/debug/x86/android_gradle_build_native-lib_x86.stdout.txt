@@ -1,0 +1,65 @@
+ninja: Entering directory `C:\Users\dbory\AndroidStudioProjects\NeonIntrinsics\app\.cxx\cmake\debug\x86'
+[1/2] Building CXX object CMakeFiles/native-lib.dir/native-lib.cpp.o
+FAILED: CMakeFiles/native-lib.dir/native-lib.cpp.o 
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\bin\clang++.exe --target=i686-none-linux-android19 --gcc-toolchain=C:/Users/dbory/AppData/Local/Android/Sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/dbory/AppData/Local/Android/Sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC -MD -MT CMakeFiles/native-lib.dir/native-lib.cpp.o -MF CMakeFiles\native-lib.dir\native-lib.cpp.o.d -o CMakeFiles/native-lib.dir/native-lib.cpp.o -c C:/Users/dbory/AndroidStudioProjects/NeonIntrinsics/app/src/main/cpp/native-lib.cpp
+In file included from C:/Users/dbory/AndroidStudioProjects/NeonIntrinsics/app/src/main/cpp/native-lib.cpp:3:
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:28:2: error: "NEON support not enabled"
+#error "NEON support not enabled"
+ ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:48:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) int8_t int8x8_t;
+                       ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:49:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(16))) int8_t int8x16_t;
+                       ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:50:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) int16_t int16x4_t;
+                       ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:51:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) int16_t int16x8_t;
+                       ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:52:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(2))) int32_t int32x2_t;
+                       ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:53:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) int32_t int32x4_t;
+                       ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:54:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(1))) int64_t int64x1_t;
+                       ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:55:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(2))) int64_t int64x2_t;
+                       ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:56:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) uint8_t uint8x8_t;
+                       ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:57:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(16))) uint8_t uint8x16_t;
+                       ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:58:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) uint16_t uint16x4_t;
+                       ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:59:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) uint16_t uint16x8_t;
+                       ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:60:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(2))) uint32_t uint32x2_t;
+                       ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:61:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) uint32_t uint32x4_t;
+                       ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:62:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(1))) uint64_t uint64x1_t;
+                       ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:63:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(2))) uint64_t uint64x2_t;
+                       ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:64:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) float16_t float16x4_t;
+                       ^
+C:\Users\dbory\AppData\Local\Android\Sdk\ndk\20.0.5594570\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\8.0.7\include\arm_neon.h:65:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) float16_t float16x8_t;
+                       ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+ninja: build stopped: subcommand failed.
