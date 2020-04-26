@@ -1,7 +1,2 @@
-ninja: Entering directory `C:\Users\dbory\AndroidStudioProjects\NeonIntrinsics\app\.cxx\cmake\debug\armeabi-v7a'
-[1/2] Building CXX object CMakeFiles/native-lib.dir/native-lib.cpp.o
-C:/Users/dbory/AndroidStudioProjects/NeonIntrinsics/app/src/main/cpp/native-lib.cpp:105:19: warning: expression result unused [-Wunused-value]
-    delete ramp1, ramp2;
-                  ^~~~~
-1 warning generated.
-[2/2] Linking CXX shared library C:\Users\dbory\AndroidStudioProjects\NeonIntrinsics\app\build\intermediates\cmake\debug\obj\armeabi-v7a\libnative-lib.so
+ninja: Entering directory `G:\NeonIntrinsics-Android\app\.cxx\cmake\debug\armeabi-v7a'
+ninja: no work to do.

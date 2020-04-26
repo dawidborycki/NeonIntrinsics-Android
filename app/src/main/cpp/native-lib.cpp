@@ -106,7 +106,7 @@ Java_com_example_neonintrinsics_MainActivity_stringFromJNI(
 
     // Display results
     std::string resultsString =
-            +"Result: " + to_string(lastResult)
+            "----==== NO NEON ====----\nResult: " + to_string(lastResult)
             + "\nElapsed time: " + to_string((int) elapsedTime) + " ms"
             + "\n\n----==== NEON ====----\n"
             + "Result: " + to_string(lastResultNeon)

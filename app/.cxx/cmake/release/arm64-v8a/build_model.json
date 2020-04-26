@@ -5,9 +5,9 @@
     "environmentVariables": []
   },
   "cmake": {
-    "cmakeArtifactsBaseFolder": "C:\\Users\\dbory\\AndroidStudioProjects\\NeonIntrinsics\\app\\.cxx\\cmake\\release\\arm64-v8a",
-    "cmakeServerLogFile": "C:\\Users\\dbory\\AndroidStudioProjects\\NeonIntrinsics\\app\\.cxx\\cmake\\release\\arm64-v8a\\cmake_server_log.txt",
-    "cmakeWrappingBaseFolder": "C:\\Users\\dbory\\AndroidStudioProjects\\NeonIntrinsics\\app\\.cxx\\cxx\\release\\arm64-v8a",
+    "cmakeArtifactsBaseFolder": "G:\\NeonIntrinsics-Android\\app\\.cxx\\cmake\\release\\arm64-v8a",
+    "cmakeServerLogFile": "G:\\NeonIntrinsics-Android\\app\\.cxx\\cmake\\release\\arm64-v8a\\cmake_server_log.txt",
+    "cmakeWrappingBaseFolder": "G:\\NeonIntrinsics-Android\\app\\.cxx\\cxx\\release\\arm64-v8a",
     "effectiveConfiguration": {
       "name": "traditional-android-studio-cmake-environment",
       "description": "Composite reified CMakeSettings configuration",
@@ -15,7 +15,7 @@
       "inheritEnvironments": [
         "ndk"
       ],
-      "buildRoot": "C:\\Users\\dbory\\AndroidStudioProjects\\NeonIntrinsics\\app\\.cxx\\cmake\\release\\arm64-v8a",
+      "buildRoot": "G:\\NeonIntrinsics-Android\\app\\.cxx\\cmake\\release\\arm64-v8a",
       "cmakeToolchain": "C:\\Users\\dbory\\AppData\\Local\\Android\\Sdk\\ndk\\20.0.5594570\\build\\cmake\\android.toolchain.cmake",
       "cmakeExecutable": "C:\\Users\\dbory\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\cmake.exe",
       "variables": [
@@ -53,7 +53,7 @@
         },
         {
           "name": "CMAKE_LIBRARY_OUTPUT_DIRECTORY",
-          "value": "C:\\Users\\dbory\\AndroidStudioProjects\\NeonIntrinsics\\app\\build\\intermediates\\cmake\\release\\obj\\arm64-v8a"
+          "value": "G:\\NeonIntrinsics-Android\\app\\build\\intermediates\\cmake\\release\\obj\\arm64-v8a"
         },
         {
           "name": "CMAKE_MAKE_PROGRAM",
@@ -66,20 +66,26 @@
         {
           "name": "CMAKE_SYSTEM_VERSION",
           "value": "19"
+        },
+        {
+          "name": "ANDROID_ARM_NEON",
+          "value": "ON"
         }
       ]
     }
   },
-  "cxxBuildFolder": "C:\\Users\\dbory\\AndroidStudioProjects\\NeonIntrinsics\\app\\.cxx\\cmake\\release\\arm64-v8a",
+  "cxxBuildFolder": "G:\\NeonIntrinsics-Android\\app\\.cxx\\cmake\\release\\arm64-v8a",
   "info": {
     "abi": "ARM64_V8A",
     "bitness": 64,
     "deprecated": false,
     "default": true
   },
-  "originalCxxBuildFolder": "C:\\Users\\dbory\\AndroidStudioProjects\\NeonIntrinsics\\app\\.cxx\\cmake\\release\\arm64-v8a",
+  "originalCxxBuildFolder": "G:\\NeonIntrinsics-Android\\app\\.cxx\\cmake\\release\\arm64-v8a",
   "variant": {
-    "buildSystemArgumentList": [],
+    "buildSystemArgumentList": [
+      "-DANDROID_ARM_NEON\u003dON"
+    ],
     "buildTargetSet": [],
     "cFlagsList": [],
     "cmakeSettingsConfiguration": "android-gradle-plugin-predetermined-name",
@@ -95,12 +101,12 @@
         "ninjaExe": "C:\\Users\\dbory\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe"
       },
       "cmakeToolchainFile": "C:\\Users\\dbory\\AppData\\Local\\Android\\Sdk\\ndk\\20.0.5594570\\build\\cmake\\android.toolchain.cmake",
-      "cxxFolder": "C:\\Users\\dbory\\AndroidStudioProjects\\NeonIntrinsics\\app\\.cxx",
+      "cxxFolder": "G:\\NeonIntrinsics-Android\\app\\.cxx",
       "gradleModulePathName": ":app",
-      "intermediatesFolder": "C:\\Users\\dbory\\AndroidStudioProjects\\NeonIntrinsics\\app\\build\\intermediates",
-      "makeFile": "C:\\Users\\dbory\\AndroidStudioProjects\\NeonIntrinsics\\app\\src\\main\\cpp\\CMakeLists.txt",
-      "moduleBuildFile": "C:\\Users\\dbory\\AndroidStudioProjects\\NeonIntrinsics\\app\\build.gradle",
-      "moduleRootFolder": "C:\\Users\\dbory\\AndroidStudioProjects\\NeonIntrinsics\\app",
+      "intermediatesFolder": "G:\\NeonIntrinsics-Android\\app\\build\\intermediates",
+      "makeFile": "G:\\NeonIntrinsics-Android\\app\\src\\main\\cpp\\CMakeLists.txt",
+      "moduleBuildFile": "G:\\NeonIntrinsics-Android\\app\\build.gradle",
+      "moduleRootFolder": "G:\\NeonIntrinsics-Android\\app",
       "ndkDefaultAbiList": [
         "ARMEABI_V7A",
         "ARM64_V8A",
@@ -163,12 +169,12 @@
       ],
       "ndkVersion": "20.0.5594570",
       "project": {
-        "compilerSettingsCacheFolder": "C:\\Users\\dbory\\AndroidStudioProjects\\NeonIntrinsics\\.cxx",
-        "cxxFolder": "C:\\Users\\dbory\\AndroidStudioProjects\\NeonIntrinsics\\.cxx",
+        "compilerSettingsCacheFolder": "G:\\NeonIntrinsics-Android\\.cxx",
+        "cxxFolder": "G:\\NeonIntrinsics-Android\\.cxx",
         "isBuildOnlyTargetAbiEnabled": true,
         "isCmakeBuildCohabitationEnabled": false,
         "isNativeCompilerSettingsCacheEnabled": false,
-        "rootBuildGradleFolder": "C:\\Users\\dbory\\AndroidStudioProjects\\NeonIntrinsics",
+        "rootBuildGradleFolder": "G:\\NeonIntrinsics-Android",
         "sdkFolder": "C:\\Users\\dbory\\AppData\\Local\\Android\\Sdk"
       },
       "splitsAbiFilterSet": [],
@@ -184,13 +190,12 @@
         "SYSTEM": {}
       }
     },
-    "objFolder": "C:\\Users\\dbory\\AndroidStudioProjects\\NeonIntrinsics\\app\\build\\intermediates\\cmake\\release\\obj",
+    "objFolder": "G:\\NeonIntrinsics-Android\\app\\build\\intermediates\\cmake\\release\\obj",
     "variantName": "release",
     "validAbiList": [
       "ARMEABI_V7A",
       "ARM64_V8A",
-      "X86",
-      "X86_64"
+      "X86"
     ]
   }
 }
