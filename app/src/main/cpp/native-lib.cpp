@@ -49,9 +49,9 @@ int dotProductNeon(short* vector1, short* vector2, short len) {
     // Main loop (note that loop index goes through segments). Unroll with 4
     int i = 0;
     for(; i+3 < segments; i+=4) {
-        // sometimes we may do preload, but on my MI8 it decrease speed.. sad
-        //asm volatile("prfm pldl1keep, [%0, #256]" : :"r"(vector1) :);
-        //asm volatile("prfm pldl1keep, [%0, #256]" : :"r"(vector2) :);
+        // Preload may help speed up sometimes
+        // asm volatile("prfm pldl1keep, [%0, #256]" : :"r"(vector1) :);
+        // asm volatile("prfm pldl1keep, [%0, #256]" : :"r"(vector2) :);
 
         // Load vector elements to registers
         int16x8_t v11 = vld1q_s16(vector1);
