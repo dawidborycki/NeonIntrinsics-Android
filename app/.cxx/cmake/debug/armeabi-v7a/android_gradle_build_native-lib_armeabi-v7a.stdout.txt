@@ -1,2 +1,0 @@
-ninja: Entering directory `G:\NeonIntrinsics-Android\app\.cxx\cmake\debug\armeabi-v7a'
-ninja: no work to do.

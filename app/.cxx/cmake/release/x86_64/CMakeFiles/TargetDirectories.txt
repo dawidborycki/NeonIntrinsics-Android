@@ -1,3 +1,0 @@
-C:/Users/dbory/AndroidStudioProjects/NeonIntrinsics/app/.cxx/cmake/release/x86_64/CMakeFiles/native-lib.dir
-C:/Users/dbory/AndroidStudioProjects/NeonIntrinsics/app/.cxx/cmake/release/x86_64/CMakeFiles/edit_cache.dir
-C:/Users/dbory/AndroidStudioProjects/NeonIntrinsics/app/.cxx/cmake/release/x86_64/CMakeFiles/rebuild_cache.dir

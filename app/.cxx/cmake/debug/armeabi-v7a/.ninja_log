@@ -1,7 +1,0 @@
-# ninja log v5
-1	715	609641372	CMakeFiles/native-lib.dir/native-lib.cpp.o	cd66ccaf93e44e69
-717	835	609641372	G:/NeonIntrinsics-Android/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libnative-lib.so	e86940a4707a6f0f
-2	575	609643625	CMakeFiles/native-lib.dir/native-lib.cpp.o	cd66ccaf93e44e69
-2	109	609643642	G:/NeonIntrinsics-Android/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libnative-lib.so	e86940a4707a6f0f
-2	592	609643836	CMakeFiles/native-lib.dir/native-lib.cpp.o	cd66ccaf93e44e69
-592	726	609643836	G:/NeonIntrinsics-Android/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libnative-lib.so	e86940a4707a6f0f
