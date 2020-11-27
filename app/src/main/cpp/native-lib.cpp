@@ -33,7 +33,7 @@ static short* generateRamp(short startValue, short len)
     return ramp;
 }
 
-static int dotProduct(short* vector1, short* vector2, short len)
+int dotProduct(short* vector1, short* vector2, short len)
 {
     int result = 0;
 
@@ -45,7 +45,7 @@ static int dotProduct(short* vector1, short* vector2, short len)
     return result;
 }
 
-static int dotProductNeon(short* vector1, short* vector2, short len)
+int dotProductNeon(short* vector1, short* vector2, short len)
 {
     const short transferSize = 4;
     short segments = len / transferSize;
@@ -80,7 +80,7 @@ static int dotProductNeon(short* vector1, short* vector2, short len)
     return result;
 }
 
-static int dotProductNeon2(short* vector1, short* vector2, short len)
+int dotProductNeon2(short* vector1, short* vector2, short len)
 {
     const short transferSize = 4;
     short segments = len / (2 * transferSize);
@@ -121,7 +121,7 @@ static int dotProductNeon2(short* vector1, short* vector2, short len)
     return result;
 }
 
-static int dotProductNeon4(short* vector1, short* vector2, short len)
+int dotProductNeon4(short* vector1, short* vector2, short len)
 {
     const short transferSize = 4;
     short segments = len / (4 * transferSize);
