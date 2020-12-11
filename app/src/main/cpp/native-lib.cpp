@@ -33,7 +33,7 @@ static short* generateRamp(short startValue, short len)
     return ramp;
 }
 
-int dotProduct(short* vector1, short* vector2, short len)
+int dotProductScalar(short* vector1, short* vector2, short len)
 {
     int result = 0;
 
@@ -66,18 +66,7 @@ int dotProductNeon(short* vector1, short* vector2, short len)
         vector2 += 4;
     }
 
-    // Store partial sums
-    int partialSums[transferSize];
-    vst1q_s32(partialSums, partialSumsNeon);
-
-    // Sum up partial sums
-    int result = 0;
-    for(int i = 0; i < transferSize; i++)
-    {
-        result += partialSums[i];
-    }
-
-    return result;
+    return vaddvq_s32(partialSumsNeon);
 }
 
 int dotProductNeon2(short* vector1, short* vector2, short len)
@@ -107,18 +96,7 @@ int dotProductNeon2(short* vector1, short* vector2, short len)
 
     int32x4_t partialSumsNeon = vaddq_s32(sum1, sum2);
 
-    // Store partial sums
-    int partialSums[transferSize];
-    vst1q_s32(partialSums, partialSumsNeon);
-
-    // Sum up partial sums
-    int result = 0;
-    for(int i = 0; i < transferSize; i++)
-    {
-        result += partialSums[i];
-    }
-
-    return result;
+    return vaddvq_s32(partialSumsNeon);
 }
 
 int dotProductNeon4(short* vector1, short* vector2, short len)
@@ -158,18 +136,7 @@ int dotProductNeon4(short* vector1, short* vector2, short len)
     partialSumsNeon = vaddq_s32(partialSumsNeon, sum3);
     partialSumsNeon = vaddq_s32(partialSumsNeon, sum4);
 
-    // Store partial sums
-    int partialSums[transferSize];
-    vst1q_s32(partialSums, partialSumsNeon);
-
-    // Sum up partial sums
-    int result = 0;
-    for (int i = 0; i < transferSize; i++)
-    {
-        result += partialSums[i];
-    }
-
-    return result;
+    return vaddvq_s32(partialSumsNeon);
 }
 
 extern "C" JNIEXPORT jstring JNICALL
@@ -194,7 +161,7 @@ Java_com_example_neonintrinsics_MainActivity_stringFromJNI(
     Timer timer;
     for (int i = 0; i < trials; i++)
     {
-        lastResult = dotProduct(ramp1, ramp2, rampLength);
+        lastResult = dotProductScalar(ramp1, ramp2, rampLength);
     }
     auto elapsedMsTime = timer.elapsedMs();
 
