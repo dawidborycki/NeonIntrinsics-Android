@@ -33,110 +33,148 @@ static short* generateRamp(short startValue, short len)
     return ramp;
 }
 
-int dotProductScalar(short* vector1, short* vector2, short len)
+int dotProductScalar(short* inputArray1, short* inputArray2, short len)
 {
     int result = 0;
 
     for (short i = 0; i < len; i++)
     {
-        result += vector1[i] * vector2[i];
+        result += inputArray1[i] * inputArray2[i];
     }
 
     return result;
 }
 
-int dotProductNeon(short* vector1, short* vector2, short len)
+int dotProductNeon(short* inputArray1, short* inputArray2, short len)
 {
-    const short transferSize = 4;
-    short segments = len / transferSize;
+    const int elementsPerIteration = 4;
+    int iterations = len / elementsPerIteration;
 
-    // 4-element vector of zeros
+    // 4-element vector of zeros to accumulate the result
     int32x4_t partialSumsNeon = vdupq_n_s32(0);
 
-    // Main loop (note that loop index goes through segments). Unroll 2-wide
-    for (int i = 0; i < segments; ++i)
+    // Main loop
+    for (int i = 0; i < iterations; ++i)
     {
         // Load vector elements to registers
-        int16x4_t v1 = vld1_s16(vector1);
-        int16x4_t v2 = vld1_s16(vector2);
+        int16x4_t v1 = vld1_s16(inputArray1);
+        int16x4_t v2 = vld1_s16(inputArray2);
 
         partialSumsNeon = vmlal_s16(partialSumsNeon, v1, v2);
 
-        vector1 += 4;
-        vector2 += 4;
+        inputArray1 += elementsPerIteration;
+        inputArray2 += elementsPerIteration;
     }
 
-    return vaddvq_s32(partialSumsNeon);
+	// Armv8 instruction to sum up all the elements into a single scalar
+	int result = vaddvq_s32(partialSumsNeon);
+
+	// Calculate the tail
+	int tailLength = len % elementsPerIteration;
+	while (tailLength--)
+	{
+		result += *inputArray1 * *inputArray2;
+		inputArray1++;
+		inputArray2++;
+	}
+
+    return result;
 }
 
-int dotProductNeon2(short* vector1, short* vector2, short len)
+int dotProductNeon2(short* inputArray1, short* inputArray2, short len)
 {
-    const short transferSize = 4;
-    short segments = len / (2 * transferSize);
+    const int elementsPerIteration = 8;
+    int iterations = len / elementsPerIteration;
 
-    // 4-element vector of zeros
-    int32x4_t sum1 = vdupq_n_s32(0);
-    int32x4_t sum2 = vdupq_n_s32(0);
+    // 4-element vectors of zeros to accumulate results within the unrolled loop
+    int32x4_t partialSum1 = vdupq_n_s32(0);
+    int32x4_t partialSum2 = vdupq_n_s32(0);
 
-    // Main loop (note that loop index goes through segments). Unroll 2-wide
-    for (int i = 0; i < segments; ++i)
+    // Main loop, unrolled 2-wide
+    for (int i = 0; i < iterations; ++i)
     {
         // Load vector elements to registers
-        int16x4_t v11 = vld1_s16(vector1);
-        int16x4_t v12 = vld1_s16(vector1 + 4);
-        int16x4_t v21 = vld1_s16(vector2);
-        int16x4_t v22 = vld1_s16(vector2 + 4);
+        int16x4_t v11 = vld1_s16(inputArray1);
+        int16x4_t v12 = vld1_s16(inputArray1 + 4);
+        int16x4_t v21 = vld1_s16(inputArray2);
+        int16x4_t v22 = vld1_s16(inputArray2 + 4);
 
-        sum1 = vmlal_s16(sum1, v11, v21);
-        sum2 = vmlal_s16(sum2, v12, v22);
+        partialSum1 = vmlal_s16(partialSum1, v11, v21);
+        partialSum2 = vmlal_s16(partialSum2, v12, v22);
 
-        vector1 += 8;
-        vector2 += 8;
+        inputArray1 += elementsPerIteration;
+        inputArray2 += elementsPerIteration;
     }
 
-    int32x4_t partialSumsNeon = vaddq_s32(sum1, sum2);
+	// Now sum up the results of the 2 partial sums from the loop
+    int32x4_t partialSumsNeon = vaddq_s32(partialSum1, partialSum2);
 
-    return vaddvq_s32(partialSumsNeon);
+	// Armv8 instruction to sum up all the elements into a single scalar
+	int result = vaddvq_s32(partialSumsNeon);
+
+	// Calculate the tail
+	int tailLength = len % elementsPerIteration;
+	while (tailLength--)
+	{
+		result += *inputArray1 * *inputArray2;
+		inputArray1++;
+		inputArray2++;
+	}
+
+    return result;
 }
 
-int dotProductNeon4(short* vector1, short* vector2, short len)
+int dotProductNeon4(short* inputArray1, short* inputArray2, short len)
 {
-    const short transferSize = 4;
-    short segments = len / (4 * transferSize);
+    const int elementsPerIteration = 16;
+    int iterations = len / elementsPerIteration;
 
     // 4-element vector of zeros
-    int32x4_t sum1 = vdupq_n_s32(0);
-    int32x4_t sum2 = vdupq_n_s32(0);
-    int32x4_t sum3 = vdupq_n_s32(0);
-    int32x4_t sum4 = vdupq_n_s32(0);
+    int32x4_t partialSum1 = vdupq_n_s32(0);
+    int32x4_t partialSum2 = vdupq_n_s32(0);
+    int32x4_t partialSum3 = vdupq_n_s32(0);
+    int32x4_t partialSum4 = vdupq_n_s32(0);
 
     // Main loop (note that loop index goes through segments). Unroll 4-wide
-    for (int i = 0; i < segments; ++i)
+    for (int i = 0; i < iterations; ++i)
     {
         // Load vector elements to registers
-        int16x4_t v11 = vld1_s16(vector1);
-        int16x4_t v12 = vld1_s16(vector1 + 4);
-        int16x4_t v13 = vld1_s16(vector1 + 8);
-        int16x4_t v14 = vld1_s16(vector1 + 12);
-        int16x4_t v21 = vld1_s16(vector2);
-        int16x4_t v22 = vld1_s16(vector2 + 4);
-        int16x4_t v23 = vld1_s16(vector2 + 8);
-        int16x4_t v24 = vld1_s16(vector2 + 12);
+        int16x4_t v11 = vld1_s16(inputArray1);
+        int16x4_t v12 = vld1_s16(inputArray1 + 4);
+        int16x4_t v13 = vld1_s16(inputArray1 + 8);
+        int16x4_t v14 = vld1_s16(inputArray1 + 12);
+        int16x4_t v21 = vld1_s16(inputArray2);
+        int16x4_t v22 = vld1_s16(inputArray2 + 4);
+        int16x4_t v23 = vld1_s16(inputArray2 + 8);
+        int16x4_t v24 = vld1_s16(inputArray2 + 12);
 
-        sum1 = vmlal_s16(sum1, v11, v21);
-        sum2 = vmlal_s16(sum2, v12, v22);
-        sum3 = vmlal_s16(sum3, v13, v23);
-        sum4 = vmlal_s16(sum4, v14, v24);
+        partialSum1 = vmlal_s16(partialSum1, v11, v21);
+        partialSum2 = vmlal_s16(partialSum2, v12, v22);
+        partialSum3 = vmlal_s16(partialSum3, v13, v23);
+        partialSum4 = vmlal_s16(partialSum4, v14, v24);
 
-        vector1 += 16;
-        vector2 += 16;
+        inputArray1 += elementsPerIteration;
+        inputArray2 += elementsPerIteration;
     }
 
-    int32x4_t partialSumsNeon = vaddq_s32(sum1, sum2);
-    partialSumsNeon = vaddq_s32(partialSumsNeon, sum3);
-    partialSumsNeon = vaddq_s32(partialSumsNeon, sum4);
+	// Now sum up the results of the 4 partial sums from the loop
+    int32x4_t partialSumsNeon = vaddq_s32(partialSum1, partialSum2);
+    partialSumsNeon = vaddq_s32(partialSumsNeon, partialSum3);
+    partialSumsNeon = vaddq_s32(partialSumsNeon, partialSum4);
 
-    return vaddvq_s32(partialSumsNeon);
+	// Armv8 instruction to sum up all the elements into a single scalar
+	int result = vaddvq_s32(partialSumsNeon);
+
+	// Calculate the tail
+	int tailLength = len % elementsPerIteration;
+	while (tailLength--)
+	{
+		result += *inputArray1 * *inputArray2;
+		inputArray1++;
+		inputArray2++;
+	}
+
+    return result;
 }
 
 extern "C" JNIEXPORT jstring JNICALL
@@ -145,7 +183,7 @@ Java_com_example_neonintrinsics_MainActivity_stringFromJNI(
         jobject /* this */)
 {
     // Ramp length and number of trials
-    const int rampLength = 1024;
+    const int rampLength = 1027;
     const int trials = 1000000;
 
     // Generate two input vectors
